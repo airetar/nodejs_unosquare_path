@@ -6,11 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "start:dev": "echo 'Hola Mundo desde Dev'",
+    "start:stage": "echo 'Hola Mundo desde Stage'"
   },
   "author": "Andrés Ireta",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "get-age": "^1.0.1",
+    "uuid": "^11.0.5"
   }
 }
