@@ -34,10 +34,17 @@ const johnDoe = makePerson(obj);
 */
 
 
-const getPokemonById = require('./js-foundation/06-promises');
 
+/* const getPokemonById = require('./js-foundation/06-promises');
 const name = getPokemonById(4)
     .then((pokemon) => console.log(pokemon))
     .catch((error) => console.log('Ha ocurrido un error, intente nuevamnete: ', error))
-    .finally(() => console.log('Final'));
+    .finally(() => console.log('Final')); */
 
+
+const { buildLogger } = require('./plugins');
+
+const logger = buildLogger('app.js');
+
+logger.log('This is a test message');
+logger.error('This is a test ERROR');
