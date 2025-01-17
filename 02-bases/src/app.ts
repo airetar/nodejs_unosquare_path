@@ -57,14 +57,14 @@ const name = getPokemonNameById(4)
 
 
 
-/* 
+
 //* Referencia a Logger winston
-import { buildLogger } from "./plugins/logger.plugin";
+import { buildLogger } from "./plugins";
 
 const logger = buildLogger('app.js');
 
 logger.log('This is a test message');
 logger.error('This is a test ERROR');
-*/
+
 
 
