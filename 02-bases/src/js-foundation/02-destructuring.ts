@@ -7,5 +7,5 @@ const characters = ['Flash', 'Arrow', 'Superman', 'Batman'];
 const [_, __, superman] = characters;
 const [flash, ...rest] = characters;
 
-//console.log(superman);
-//console.log(rest);
+console.log(superman);
+console.log(rest);

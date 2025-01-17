@@ -5,15 +5,17 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
-    "start:dev": "echo 'Hola Mundo desde Dev'",
-    "start:stage": "echo 'Hola Mundo desde Stage'"
+    "dev": "nodemon",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/app.js"
   },
   "author": "Andrés Ireta",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "@types/node": "^22.10.7",
+    "nodemon": "^3.1.9",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.7.3"
   },
   "dependencies": {
     "axios": "^1.7.9",
