@@ -42,9 +42,9 @@ const name = getPokemonById(4)
     .finally(() => console.log('Final')); */
 
 
-const { buildLogger } = require('./plugins');
+/* const { buildLogger } = require('./plugins');
 
 const logger = buildLogger('app.js');
 
 logger.log('This is a test message');
-logger.error('This is a test ERROR');
+logger.error('This is a test ERROR'); */
