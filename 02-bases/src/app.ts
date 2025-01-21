@@ -7,8 +7,6 @@ emailTemplateCopy = emailTemplateCopy.replace('{{ orderDetail }}', 'Order detail
 console.log(emailTemplateCopy); 
 */
 
-import { getPokemonNameById } from "./js-foundation/06-promises";
-
 /* 
 //* Referencia a archivo 02 destructuring
 require('./js-foundation/02-destructuring');
@@ -28,9 +26,6 @@ getUserById(1, (error, user) => {
 });
 */
 
-
-
-
 /*
 //* Referencia a 05 factory, patrones Factory Functions (buildMakePerson) y Adapter (getUUID, getAge)
 import { getUUID, getAge } from './plugins';
@@ -41,21 +36,15 @@ const johnDoe = makePerson(obj);
 console.log(johnDoe); 
 */
 
-
-
-
-
-
 /*
 //* Referencia a 06 promises 
+import { getPokemonNameById } from "./js-foundation/06-promises";
 
 const name = getPokemonNameById(4)
     .then((pokemon) => console.log(pokemon))
     .catch((error) => console.log('Ha ocurrido un error, intente nuevamnete: ', error))
     .finally(() => console.log('Final'));
 */
-
-
 
 
 /*
