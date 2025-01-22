@@ -2,8 +2,8 @@
 //* Referencia a module exports de archivos/métodos
 import { emailTemplate } from "./js-foundation/01-template";
 let emailTemplateCopy = emailTemplate;
-emailTemplateCopy = emailTemplateCopy.replace('{{ name }}', 'John Doe');
-emailTemplateCopy = emailTemplateCopy.replace('{{ orderDetail }}', 'Order detail Amazon Echo');
+emailTemplateCopy = emailTemplateCopy.replace('{{name}}', 'John Doe');
+emailTemplateCopy = emailTemplateCopy.replace('{{orderDetail}}', 'Order detail Amazon Echo');
 console.log(emailTemplateCopy); 
 */
 
