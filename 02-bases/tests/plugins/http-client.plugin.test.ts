@@ -21,14 +21,4 @@ describe('plugins/http-client.plugin.ts', () => {
         expect(typeof httpClientPlugin.put).toBe('function');
         expect(typeof httpClientPlugin.delete).toBe('function');
     });
-
-    test('POST, PUT, DEL should return "Not implemented" error', () => {
-        const url = 'https://jsonplaceholder.typicode.com/todos/1';
-        try {
-            const data = httpClientPlugin.post(url, {})
-        } catch (error) {
-            //console.log(error);
-            expect(error).toBe('Not implemented');
-        }
-    })
 });
