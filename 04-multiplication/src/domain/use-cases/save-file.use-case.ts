@@ -5,9 +5,9 @@ export interface SaveFileUseCase {
 }
 
 export interface Options {
-    fileContent     : string;
-    destinationPath?: string;
-    fileName?       : string;
+    fileContent      : string;
+    destinationPath? : string;
+    fileName?        : string;
 }
 
 export class SaveFile implements SaveFileUseCase {
@@ -20,7 +20,9 @@ export class SaveFile implements SaveFileUseCase {
             fs.writeFileSync(`${destinationPath}/${fileName}.txt`, fileContent);
             return true;
         } catch (error) {
-            console.error(error);
+            // TODO: improve with winston
+            //console.error(error);
+
             return false;
         }
         
