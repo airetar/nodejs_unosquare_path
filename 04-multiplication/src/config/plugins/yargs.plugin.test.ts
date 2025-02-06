@@ -41,21 +41,28 @@ describe('Test Args plugin', () => {
         }))
     });
 
-    /*
-    test('Should return an error when base isNan', async () => {
-        const argv = await runCommand(['-b', 'a', '-l', '15', '-s', '-n', 'custom-name-table', '-d', 'custom-output-path']);
-        expect(argv).toThrow();
+    test('Should return an error when base is less than 1', async () => {
+        try {
+            await runCommand(['-b', 'a', '-l', '15', '-s', '-n', 'custom-name-table', '-d', 'custom-output-path']);
+        } catch (error) {
+            expect(error).toBe('Error: base must be a number');
+        }
     });
 
-    test('Should return an error when base is less than 1', () => {
-        expect(async () => {
+    test('Should return an error when base is less than 1', async () => {
+        try {
             await runCommand(['-b', '0', '-l', '15', '-s', '-n', 'custom-name-table', '-d', 'custom-output-path']);
-        }).toThrow('Base must be a greater than 0');
+        } catch (error) {
+            expect(error).toBe('Error: Base must be a greater than 0');
+        }
     });
     
-    test('Should return an error when limit isNaN', () => {
-        expect(async () => {
+    test('Should return an error when limit isNaN', async () => {
+        try {
             await runCommand(['-b', '5', '-l', 'a', '-s', '-n', 'custom-name-table', '-d', 'custom-output-path']);
-        }).toThrow('Limit must be a number');
-    }); */
+        } catch (error) {
+            expect(error).toBe('Error: Limit must be a number');
+        }
+        
+    });
 })

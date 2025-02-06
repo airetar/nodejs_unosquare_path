@@ -33,26 +33,18 @@ export const yarg = yargs(hideBin(process.argv))
         describe: 'Directory for the file'
     })
     .check((argv) => {
-        switch(true) {
-            case (isNaN(argv.b)):
-                throw new Error('Base must be a number');
-            case (argv.b < 1):
-                throw new Error('Base must be a greater than 0');
-            case (isNaN(argv.l)):
-                throw new Error('Limit must be a number');
-            default:
-                return true;
-
+        if (isNaN(argv.b)) {
+            throw new Error('Error: base must be a number');
         }
-        /* if (isNaN(argv.b)) {
-            
-        }
-        if () {
-            throw 'Base must be a greater than 0';
+        if (argv.b < 1) {
+            throw new Error('Error: Base must be a greater than 0');
         }
         if (isNaN(argv.l)) {
-            throw 'Limit must be a number';
+            throw new Error('Error: Limit must be a number');
         }
-        return true; */
+        return true;
+    })
+    .fail((_, err, yargs) => {
+        if (err) throw err.message;
     })
     .parseSync();
