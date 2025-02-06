@@ -6,7 +6,7 @@ describe('Server App', () => {
     const options = {
         base: 5,
         limit: 10,
-        showTable: false,
+        showTable: true,
         fileName: 'name serverapp test',
         destinationPath: 'outputs-serverapp-test'
     };
