@@ -4,7 +4,7 @@ import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
 
 const prismaClient = new PrismaClient();
 
-const SeverityLevelH = {
+export const SeverityLevelH = {
     [LogSeverityLevel.high]: SeverityLevel.HIGH,
     [LogSeverityLevel.medium]: SeverityLevel.MEDIUM,
     [LogSeverityLevel.low]: SeverityLevel.LOW,

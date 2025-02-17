@@ -19,6 +19,12 @@ export class SendEmailLogs implements SendLogEmailUseCase {
             if ( !sent ) {
                 throw new Error('Email not sent');
             }
+            const log = new LogEntity({
+                message: `Log files sent to ${to}`,
+                level: LogSeverityLevel.low,
+                origin: 'send-email-logs.ts'
+            });
+            this.logRepository.saveLog(log);
             return true;
         } catch (error) {
             const log = new LogEntity({
