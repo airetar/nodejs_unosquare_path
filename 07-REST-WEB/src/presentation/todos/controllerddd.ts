@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { prisma } from "../../data/postgres";
+import { prisma } from "../../data/postgres-client";
 import { CreateTodoDto, UpdateTodoDto } from "../../domain/dto";
 import { TodoRepository } from "../../domain";
 
