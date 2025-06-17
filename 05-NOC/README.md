@@ -10,7 +10,7 @@ El objetivo es crear un NOC usando arquitectura limpia con Typescript
 4. Levantar las bases de datos con el comando
 ```docker compose up -d```
 5. Ejecutar el comando
-```npx primsa migrate dev```
+```npx prisma migrate dev```
 7. Ejecutar ```npm run dev```
 
 ```

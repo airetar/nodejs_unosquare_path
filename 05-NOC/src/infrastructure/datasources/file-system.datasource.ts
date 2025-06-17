@@ -4,15 +4,18 @@ import fs from 'fs';
 
 export class FileSystemDatasource implements LogDatasource {
 
-    private logPath = 'logs/';
-    private allLogsPath = 'logs/logs-all.log';
-    private mediumLogsPath = 'logs/logs-medium.log';
-    private highLogsPath = 'logs/logs-high.log';
+    private readonly logPath = 'logs/';
+    private readonly allLogsPath = 'logs/logs-all.log';
+    private readonly mediumLogsPath = 'logs/logs-medium.log';
+    private readonly highLogsPath = 'logs/logs-high.log';
 
     constructor() {
         this.createLogsfiles();
     }
-
+    
+    /**
+     * Method to ensure folders and files creation before start working with them
+     */
     private createLogsfiles = () => {
         if (!fs.existsSync(this.logPath)) {
             fs.mkdirSync(this.logPath);
