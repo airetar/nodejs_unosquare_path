@@ -14,6 +14,7 @@ async function main() {
      * * MONGO IMPLEMENTATION EXAMPLES
      */
 
+    
     await MongoDatabase.connect({
         mongoUrl: envs.MONGO_URL,
         dbName: envs.MONGO_DB_NAME
