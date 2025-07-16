@@ -2,8 +2,8 @@ node_modules/
 dist/
 .DS_Store
 logs/
+mongo_store/
 secrets.txt
-mongo/
 postgres/
 mongo-test/
 postgres-test/
