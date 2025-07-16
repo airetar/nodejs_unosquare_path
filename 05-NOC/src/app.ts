@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { envs } from "./config/plugins/envs.plugin";
-import { LogModel, MongoDatabase } from "./data/mongo";
+import { MongoDatabase } from "./data/mongo";
 import { Server } from "./presentation/server";
 import { log } from "console";
 

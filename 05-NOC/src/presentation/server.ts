@@ -9,21 +9,21 @@ import { LogRepositoryImpl } from "../infrastructure/repositories/log.repository
 import { CronService } from "./cron/cron.service";
 import { EmailService } from "./email/email.service";
 
-const fsLogRepository = new LogRepositoryImpl(
+ const fsLogRepository = new LogRepositoryImpl(
     new FileSystemDatasource()
 );
-
+/*
 const mongoLogRepository = new LogRepositoryImpl(
     new MongoLogDatasource()
 );
 
 const postgreLogRepository = new LogRepositoryImpl(
     new PostgreLogDatasource()
-);
+); */
 
 export class Server {
     public static async start() {
-        console.log('Server started...');
+        console.log('Server started...!!');
 
         const emailService = new EmailService();
         /**
@@ -67,14 +67,15 @@ export class Server {
         /**
          * * Cron job Multiple use case
          */
-        CronService.createJob('*/5 * * * * *', () => {
+        
+        // CronService.createJob('*/5 * * * * *', () => {
             //const url = 'https://google.com';
-            const url = 'http://localhost:3000/posts'
-            new CheckServiceMultiple(
-                [fsLogRepository, mongoLogRepository, postgreLogRepository],
-                () => console.log( `${ url } is Ok` ),
-                (error) => console.log( error )
-            ).execute( url )
-        });
+        //     const url = 'http://localhost:3000/posts'
+        //     new CheckServiceMultiple(
+        //         [fsLogRepository, mongoLogRepository, postgreLogRepository],
+        //         () => console.log( `${ url } is Ok` ),
+        //         (error) => console.log( error )
+        //     ).execute( url )
+        // });
     }
 }

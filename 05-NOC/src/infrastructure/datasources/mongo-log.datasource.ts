@@ -1,8 +1,13 @@
+/* import { MongoLogDatasource } from './mongo-log.datasource';
 import { LogModel } from "../../data/mongo";
 import { LogDatasource } from "../../domain/datasources/log.datasource";
-import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity";
+import { LogEntity, LogSeverityLevel } from "../../domain/entities/log.entity"; */
 
-export class MongoLogDatasource implements LogDatasource {
+export class MongoLogDatasource {
+    
+}
+
+/* export class MongoLogDatasource implements LogDatasource {
 
     async saveLog(log: LogEntity): Promise<void> {
         const newLog = await LogModel.create(log);
@@ -17,4 +22,4 @@ export class MongoLogDatasource implements LogDatasource {
         return logs.map(LogEntity.fromObject);
     }
     
-}
+} */
