@@ -1,4 +1,6 @@
+import { LogDatasource } from "../domain/datasources/log.datasource";
 import { LogSeverityLevel } from "../domain/entities/log.entity";
+import { LogRepository } from "../domain/repository/log.repository";
 import { CheckService } from "../domain/use-cases/checks/check-service";
 import { CheckServiceMultiple } from "../domain/use-cases/checks/check-service-multiple";
 import { SendEmailLogs } from "../domain/use-cases/email/send-email-logs";
@@ -23,12 +25,12 @@ const postgreLogRepository = new LogRepositoryImpl(
 
 export class Server {
     public static async start() {
-        console.log('Server started...!!');
-
-        const emailService = new EmailService();
+        console.log('>> Server started');
+        
         /**
          * * 1.1 Without attachments
          */
+        // const emailService = new EmailService();
         // emailService.sendEmail({
         //     to: 'andres.iretar@gmail.com',
         //     subject: 'Logs de sistema',
@@ -44,17 +46,22 @@ export class Server {
         /**¨
          * * Using the Use Case
          */
+
+        // const fileSystemLogRepository = new LogRepositoryImpl(new FileSystemDatasource);
         // new SendEmailLogs(
         //     emailService,
         //     fileSystemLogRepository
         // ).execute(['andres.iretar@gmail.com', 'aireta@outlook.com']);
         
-        // const logs = await logRepository.getLogs(LogSeverityLevel.low);
+        // const logs = await fileSystemLogRepository.getLogs(LogSeverityLevel.low);
         // console.log(logs);
         
         /**
-         * * Cron job single use case
+         * * Cron job single use case (FileSystemDatasource | MongoDatasource | PostreDatasource)
          */
+        
+        const logRepository = new LogRepositoryImpl(new FileSystemDatasource);
+        // const logRepository = new LogRepositoryImpl(new MongoLogDatasource);
         // CronService.createJob('*/5 * * * * *', () => {
         //     //const url = 'https://google.com';
         //     const url = 'http://localhost:3000/posts'
@@ -64,6 +71,9 @@ export class Server {
         //         (error) => console.log( error )
         //     ).execute( url )
         // });
+        
+        const logs = await logRepository.getLogs(LogSeverityLevel.low);
+        console.log(logs);
         /**
          * * Cron job Multiple use case
          */

@@ -4,7 +4,7 @@ dist/
 logs/
 mongo_store/
 secrets.txt
-postgres/
+postgres_store/
 mongo-test/
 postgres-test/
 .env
