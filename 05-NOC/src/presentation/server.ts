@@ -27,8 +27,9 @@ export class Server {
     public static async start() {
         console.log('>> Server started');
         
-        /**
+        /** --------------------------------------------------------------------------------------
          * * 1.1 Without attachments
+         *  --------------------------------------------------------------------------------------
          */
         // const emailService = new EmailService();
         // emailService.sendEmail({
@@ -43,8 +44,9 @@ export class Server {
          * * 1.2 With attachments
          */
         //emailService.sendEmailWithFileSystemLogs(['andres.iretar@gmail.com', 'aireta@outlook.com']);
-        /**¨
+        /** --------------------------------------------------------------------------------------
          * * Using the Use Case
+         *  --------------------------------------------------------------------------------------
          */
 
         // const fileSystemLogRepository = new LogRepositoryImpl(new FileSystemDatasource);
@@ -56,14 +58,16 @@ export class Server {
         // const logs = await fileSystemLogRepository.getLogs(LogSeverityLevel.low);
         // console.log(logs);
         
-        /**
+        /** --------------------------------------------------------------------------------------
          * * Cron job single use case (FileSystemDatasource | MongoDatasource | PostreDatasource)
-         */
+         *  --------------------------------------------------------------------------------------
+         */ 
         
-        const logRepository = new LogRepositoryImpl(new FileSystemDatasource);
-        // const logRepository = new LogRepositoryImpl(new MongoLogDatasource);
+        // const logRepository = new LogRepositoryImpl(new FileSystemDatasource());
+        // const logRepository = new LogRepositoryImpl(new MongoLogDatasource());
+        // const logRepository = new LogRepositoryImpl(new PostgreLogDatasource());
         // CronService.createJob('*/5 * * * * *', () => {
-        //     //const url = 'https://google.com';
+        //     const url = 'https://google.com';
         //     const url = 'http://localhost:3000/posts'
         //     new CheckService(
         //         logRepository,
@@ -72,20 +76,23 @@ export class Server {
         //     ).execute( url )
         // });
         
-        const logs = await logRepository.getLogs(LogSeverityLevel.low);
-        console.log(logs);
-        /**
+        // const logs = await logRepository.getLogs(LogSeverityLevel.low);
+        // console.log(logs);
+        /** --------------------------------------------------------------------------------------
          * * Cron job Multiple use case
+         *  --------------------------------------------------------------------------------------
          */
-        
-        // CronService.createJob('*/5 * * * * *', () => {
-            //const url = 'https://google.com';
-        //     const url = 'http://localhost:3000/posts'
-        //     new CheckServiceMultiple(
-        //         [fsLogRepository, mongoLogRepository, postgreLogRepository],
-        //         () => console.log( `${ url } is Ok` ),
-        //         (error) => console.log( error )
-        //     ).execute( url )
-        // });
+        const fsLogRepository = new LogRepositoryImpl(new FileSystemDatasource());
+        const mongoLogRepository = new LogRepositoryImpl(new MongoLogDatasource());
+        const postgreLogRepository = new LogRepositoryImpl(new PostgreLogDatasource());
+        CronService.createJob('*/5 * * * * *', () => {
+            const url = 'https://google.com';
+            // const url = 'http://localhost:3000/posts'
+            new CheckServiceMultiple(
+                [fsLogRepository, mongoLogRepository, postgreLogRepository],
+                () => console.log( `${ url } is Ok` ),
+                (error) => console.log( error )
+            ).execute( url )
+        });
     }
 }

@@ -35,23 +35,23 @@ async function main() {
      * * POSTGRE IMPLEMENTATION EXAMPLES
      */
 
-    //const prisma = new PrismaClient();
-    // const newLog = await prisma.logModel.create({
-    //     data: {
-    //         level: 'MEDIUM',
-    //         message: 'Teste message postgre',
-    //         origin: 'App.ts'
-    //     }
-    // });
+    const prisma = new PrismaClient();
+    const newLog = await prisma.logModel.create({
+        data: {
+            level: 'MEDIUM',
+            message: 'Teste message postgre',
+            origin: 'App.ts'
+        }
+    });
 
-    //console.log(newLog);
+    console.log(newLog);
 
-    // const logs = await prisma.logModel.findMany({
-    //     where: {
-    //         level: 'HIGH'
-    //     }
-    // });
-    // console.log(logs);    
+    const logs = await prisma.logModel.findMany({
+        where: {
+            level: 'MEDIUM'
+        }
+    });
+    console.log(logs);    
 
     Server.start();
 
